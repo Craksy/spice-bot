@@ -38,7 +38,7 @@ class SpiceBot(commands.Bot):
 
         self.add_command(commands.command(brief="Create a new game.")(self.newgame))
         self.add_command(commands.command(brief="Start a game.")(self.startgame))
-        self.add_command(commands.command(brief="Roll. Can be invoked with 'spicy' or 'mild'")(self.roll))
+        self.add_command(commands.command(brief="Roll. Can be invoked with 'spicy' or 'mild'")(self.rollspice))
         self.add_command(commands.command()(self.stats))
         self.add_command(commands.command(brief="End a game in progress")(self.endgame))
 
@@ -142,7 +142,7 @@ class SpiceBot(commands.Bot):
             resp = 'mild_roll_fail'
         await ctx.send(self.format_message(resp, player, roll=roll))
 
-    async def roll(self, ctx:commands.Context, type = None):
+    async def rollspice(self, ctx:commands.Context, type = None):
         """Make a roll. [Type] can be either 'spicy' or 'mild'. If type is not
         provided, chose type via reactions."""
         if not self.game_state == GameStates.START:
